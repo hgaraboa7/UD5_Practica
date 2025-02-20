@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import modelo.vo.Socio;
 
 /**
  *
@@ -86,6 +87,17 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel2.setText("dni");
 
+        txtDni.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtDniFocusLost(evt);
+            }
+        });
+        txtDni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDniActionPerformed(evt);
+            }
+        });
+
         jLabel3.setText("fecha alta");
 
         jLabel4.setText("cuota");
@@ -136,6 +148,22 @@ public class Principal extends javax.swing.JFrame {
         });
 
         cbTipoActividad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
+
+        cbUsuarioActividad.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbUsuarioActividadItemStateChanged(evt);
+            }
+        });
+        cbUsuarioActividad.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cbUsuarioActividadFocusLost(evt);
+            }
+        });
+        cbUsuarioActividad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbUsuarioActividadActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -244,7 +272,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
+        controladorPrincipal.cargarCombo();
     }//GEN-LAST:event_formWindowOpened
 
     private void txtNombreSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreSocioActionPerformed
@@ -252,11 +280,12 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreSocioActionPerformed
 
     private void txtNombreSocioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreSocioFocusLost
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtNombreSocioFocusLost
 
     private void btnInsertarSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarSocioActionPerformed
         controladorPrincipal.insertarSocio();
+       controladorPrincipal.cargarCombo();
     }//GEN-LAST:event_btnInsertarSocioActionPerformed
 
     private void btnModificarSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarSocioActionPerformed
@@ -268,12 +297,32 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBorrarSocioActionPerformed
 
     private void btnInsertarActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarActividadActionPerformed
-        // TODO add your handling code here:
+        controladorPrincipal.insertarActividad();
     }//GEN-LAST:event_btnInsertarActividadActionPerformed
 
     private void btnBorrarActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActividadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBorrarActividadActionPerformed
+
+    private void cbUsuarioActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbUsuarioActividadActionPerformed
+         controladorPrincipal.cargarSocio();
+    }//GEN-LAST:event_cbUsuarioActividadActionPerformed
+
+    private void txtDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDniActionPerformed
+
+    private void txtDniFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDniFocusLost
+      controladorPrincipal.buscarSocio();
+    }//GEN-LAST:event_txtDniFocusLost
+
+    private void cbUsuarioActividadItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbUsuarioActividadItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbUsuarioActividadItemStateChanged
+
+    private void cbUsuarioActividadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cbUsuarioActividadFocusLost
+       
+    }//GEN-LAST:event_cbUsuarioActividadFocusLost
 
     public JButton getBtnBorrarActividad() {
         return btnBorrarActividad;
@@ -323,11 +372,11 @@ public class Principal extends javax.swing.JFrame {
         this.cbTipoActividad = cbTipoActividad;
     }
 
-    public JComboBox<String> getCbUsuarioActividad() {
+    public JComboBox<Socio> getCbUsuarioActividad() {
         return cbUsuarioActividad;
     }
 
-    public void setCbUsuarioActividad(JComboBox<String> cbUsuarioActividad) {
+    public void setCbUsuarioActividad(JComboBox<Socio> cbUsuarioActividad) {
         this.cbUsuarioActividad = cbUsuarioActividad;
     }
 
@@ -406,7 +455,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton btnInsertarSocio;
     private javax.swing.JButton btnModificarSocio;
     private javax.swing.JComboBox<String> cbTipoActividad;
-    private javax.swing.JComboBox<String> cbUsuarioActividad;
+    private javax.swing.JComboBox<Socio> cbUsuarioActividad;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

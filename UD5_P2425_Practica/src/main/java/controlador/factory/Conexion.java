@@ -5,6 +5,7 @@ import com.mongodb.MongoClientOptions;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import javax.swing.JOptionPane;
+import modelo.dao.ActividadDAO;
 import modelo.dao.SocioDAO;
 
 import org.bson.codecs.configuration.CodecRegistries;
@@ -70,6 +71,9 @@ public class Conexion extends DAOFactory{
     //Define los  métodos para los objetos dao
     public static SocioDAO getSocioDAO(){
         return new SocioDAO();
+    }
+    public static ActividadDAO getActividadDAO(){
+        return new ActividadDAO();
     }
     
 
