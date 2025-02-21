@@ -289,7 +289,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInsertarSocioActionPerformed
 
     private void btnModificarSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarSocioActionPerformed
-        // TODO add your handling code here:
+        controladorPrincipal.modificarSocio();
     }//GEN-LAST:event_btnModificarSocioActionPerformed
 
     private void btnBorrarSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarSocioActionPerformed

@@ -160,4 +160,37 @@ public class controladorPrincipal {
         
     }
 
+    public static void modificarSocio() {
+
+       if(ventana.getTxtDni().getText().isBlank()||
+                ventana.getTxtNombreSocio().getText().isBlank()||
+                ventana.getTxtFechaAlta().getText().isBlank()||
+                ventana.getTxtCuotaSocio().getText().isBlank()){
+            JOptionPane.showMessageDialog(null, "faltan datos");
+            return;
+        }
+       try{
+           Document d=socio.buscarSocio(conn, ventana.getTxtDni().getText());
+           if(d!=null){
+               
+               socio.modificar(conn,d,ventana.getTxtNombreSocio().getText(),
+                       ventana.getTxtFechaAlta().getText(),
+                       ventana.getTxtDni().getText(),                       
+                       Integer.valueOf(ventana.getTxtCuotaSocio().getText()));
+               System.out.println("modificado");
+           }else{
+               JOptionPane.showMessageDialog(null, "no existe");
+               return;
+           }
+           
+           
+           
+       }catch(Exception e){
+           e.printStackTrace();
+       }
+        
+        
+        
+    }
+
 }

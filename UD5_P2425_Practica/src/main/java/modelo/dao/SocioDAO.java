@@ -9,6 +9,7 @@ import com.mongodb.client.MongoCursor;
 import com.mongodb.client.model.Aggregates;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Sorts;
+import com.mongodb.client.model.Updates;
 import controlador.factory.Conexion;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -99,6 +100,22 @@ public class SocioDAO {
             return null;
         }
         
+    }
+
+    public void modificar(Conexion conn, Document d, String nombre, String fecha_alta, String dni, Integer cuota) {
+        Document doc = new Document();
+
+        doc.append("nombre", nombre) 
+                .append("fecha_alta", fecha_alta)
+                .append("cuota", cuota);
+
+        conn.getColeccion("Empresa").updateOne(d, 
+                new Document("$set", doc));     
+        
+        
+      //  Bson act=Updates.combine(Updates);
+  
+    
     }
 
 }
